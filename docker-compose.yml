@@ -12,8 +12,8 @@ services:
     #   dockerfile: Dockerfile.dev
     #   context: ./nginx
     image: 'vinniiee/multi-nginx'
-    expose:
-      - '80'
+    ports:
+      - '80:80'
   api:
     # build:
     #   dockerfile: Dockerfile.dev
