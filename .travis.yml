@@ -5,6 +5,7 @@ services:
 before_install:
   - docker build -t vinniiee/react-test -f ./client/Dockerfile.dev ./client
 
+before_script: chmod 0555 ./node_modules/.bin/react-scripts
 script:
   - docker run -e CI=true vinniiee/react-test npm run test
 
