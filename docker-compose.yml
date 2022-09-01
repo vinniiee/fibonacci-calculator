@@ -8,15 +8,17 @@ services:
   #   image: 'redis:latest'
   nginx:
     restart: always
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./nginx
+    # build:
+    #   dockerfile: Dockerfile.dev
+    #   context: ./nginx
+    image: 'vinniiee/multi-nginx'
     ports:
       - '80:80'
   api:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./server
+    # build:
+    #   dockerfile: Dockerfile.dev
+    #   context: ./server
+    image: 'vinniiee/multi-server'
     volumes:
       - /app/node_modules
       - ./server:/app
@@ -29,9 +31,10 @@ services:
     #   - PGPASSWORD=postgres_password
     #   - PGPORT=5432
   client:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./client
+    # build:
+    #   dockerfile: Dockerfile.dev
+    #   context: ./client
+    image: 'vinniiee/multi-client'
     volumes:
       - /app/node_modules
       - ./client:/app
@@ -39,9 +42,10 @@ services:
 #            Fixes bug where websocket connection is fixed to default port 3000
             - WDS_SOCKET_PORT=0
   worker:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./worker
+    # build:
+    #   dockerfile: Dockerfile.dev
+    #   context: ./worker
+    image: 'vinniiee/multi-worker'
     volumes:
       - /app/node_modules
       - ./worker:/app
